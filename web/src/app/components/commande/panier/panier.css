@@ -1,0 +1,247 @@
+:host {
+  --noir: #000;
+  --blanc: #fff;
+  --gris-50: #fafafa;
+  --gris-200: #e5e5e5;
+  --gris-500: #737373;
+  --gris-900: #171717;
+  --radius: 14px;
+  --radius-sm: 10px;
+  --shadow-md: 0 4px 16px rgba(0,0,0,0.06);
+  --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.panier {
+  background: var(--blanc);
+  border: 1.5px solid var(--gris-200);
+  border-radius: var(--radius);
+  display: flex;
+  flex-direction: column;
+  position: sticky;
+  top: 1.5rem;
+  max-height: calc(100vh - 3rem);
+  overflow: hidden;
+  animation: fadeInUp 0.5s ease backwards;
+  animation-delay: 0.1s;
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Header */
+.panier__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.25rem;
+  border-bottom: 1.5px solid var(--gris-200);
+  background: var(--gris-50);
+}
+
+.panier__title {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 700;
+  font-size: 0.95rem;
+}
+
+.panier__count {
+  min-width: 26px;
+  height: 26px;
+  padding: 0 0.5rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--noir);
+  color: var(--blanc);
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+/* Items */
+.panier__items {
+  flex: 1;
+  overflow-y: auto;
+  padding: 0.5rem;
+}
+
+.panier__item {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.65rem 0.75rem;
+  border-radius: var(--radius-sm);
+  transition: background var(--transition);
+  animation: slideIn 0.35s ease backwards;
+}
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateX(12px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+.panier__item:hover { background: var(--gris-50); }
+
+.item__info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  min-width: 0;
+}
+
+.item__nom {
+  font-size: 0.875rem;
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.item__prix { font-size: 0.75rem; color: var(--gris-500); }
+
+/* Quantité */
+.item__qty {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  background: var(--gris-50);
+  border-radius: 999px;
+  padding: 0.2rem;
+}
+
+.qty-btn {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: none;
+  background: var(--blanc);
+  color: var(--noir);
+  font-size: 0.875rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition);
+}
+
+.qty-btn:hover {
+  background: var(--noir);
+  color: var(--blanc);
+  transform: scale(1.1);
+}
+
+.qty-value {
+  min-width: 20px;
+  text-align: center;
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+/* Remove */
+.item__remove {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  border: none;
+  background: transparent;
+  color: var(--gris-500);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition);
+}
+
+.item__remove:hover {
+  background: var(--noir);
+  color: var(--blanc);
+  transform: rotate(90deg);
+}
+
+/* Vide */
+.panier__empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 3rem 1rem;
+  color: var(--gris-500);
+  text-align: center;
+}
+
+.panier__empty p { margin: 0; font-size: 0.85rem; }
+
+/* Footer */
+.panier__footer {
+  border-top: 1.5px solid var(--gris-200);
+  padding: 1rem 1.25rem 1.25rem;
+  background: var(--gris-50);
+}
+
+.panier__ligne {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.85rem;
+  color: var(--gris-500);
+  padding: 0.3rem 0;
+}
+
+.panier__ligne--total {
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: var(--noir);
+  border-top: 1px dashed var(--gris-200);
+  margin-top: 0.4rem;
+  padding-top: 0.7rem;
+}
+
+/* Bouton checkout */
+.btn--checkout {
+  width: 100%;
+  padding: 0.9rem;
+  font-size: 0.95rem;
+  margin-top: 0.75rem;
+  border-radius: var(--radius-sm);
+  border: 2px solid var(--noir);
+  background: var(--noir);
+  color: var(--blanc);
+  font-weight: 700;
+  font-family: inherit;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  position: relative;
+  overflow: hidden;
+  transition: all var(--transition);
+}
+
+.btn--checkout::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  left: -100%;
+  background: linear-gradient(120deg, transparent, rgba(255,255,255,0.25), transparent);
+  transition: left 0.6s ease;
+}
+
+.btn--checkout:hover::before { left: 100%; }
+
+.btn--checkout:hover {
+  background: var(--blanc);
+  color: var(--noir);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.btn--checkout:hover svg { transform: translateX(4px); }
+.btn--checkout svg { transition: transform var(--transition); }
+.btn--checkout:active { transform: translateY(0) scale(0.98); }

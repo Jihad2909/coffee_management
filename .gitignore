@@ -1,0 +1,35 @@
+
+# IDE
+.vscode/
+.idea/
+*.iml
+
+# Java / Spring Boot
+**/target/
+*.class
+*.log
+
+# Node.js / Angular / React Native
+**/node_modules/
+**/dist/
+**/.angular/
+**/.expo/
+**/coverage/
+
+# Android / iOS build files
+**/android/.gradle/
+**/android/app/build/
+**/ios/Pods/
+
+# Environment variables and local secrets
+**/.env
+**/.env.*
+!**/.env.example
+
+# Local application configuration
+**/application-local.properties
+**/application-local.yml
+
+# Operating system
+.DS_Store
+Thumbs.db
